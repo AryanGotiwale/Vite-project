@@ -30,9 +30,9 @@ body {
 }
 /* .Apply-btn:active{
   background-color: white;
-} */ */
+/* } */ 
 
-.All-Select-btn{
+/* .All-Select-btn{
   background-color: hsl(152, 91%, 36%);
   border: none;
   border-radius: 5px;
@@ -40,7 +40,7 @@ body {
 }
 .All-Select-btn:hover{
   background-color: hsl(152, 91%, 31%);
-}
+} */ 
 /* .All-Select-btn:active{
   background-color: white;
 } */
