@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.pi-check {
+  font-size: 1.2rem;
+  color: #007ad9;
+  cursor: pointer;
+}
+
+.p-highlight {
+  background-color: #e0f7fa !important;
+}
+.p-button-success{
+  background-color: re;
+}
+
