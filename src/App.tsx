@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { DataTable, DataTablePageParams } from 'primereact/datatable';
+
+import { DataTable, DataTableStateEvent } from 'primereact/datatable'
+
 import { Column } from 'primereact/column';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { InputText } from 'primereact/inputtext';
@@ -84,16 +86,20 @@ const App: React.FC = () => {
     fetchArtworks(1);
   }, []);
 
-  const onPageChange = (e: DataTablePageParams) => {
-    const page = e.page + 1;
-    setPageParams({ first: e.first, rows: e.rows });
+  // const onPageChange = (e: DataTablePageParams) => {
+  //   const page = e.page + 1;
+  //   setPageParams({ first: e.first, rows: e.rows });
+  //   fetchArtworks(page);
+  // };
+  const onPageChange = (event: DataTableStateEvent) => {
+    const page = event.page ? event.page + 1 : 1; 
+    setPageParams({ first: event.first ?? 0, rows: event.rows ?? 10 });
     fetchArtworks(page);
   };
-
   const handleBulkSelect = async () => {
     const count = parseInt(bulkSelectCount, 10);
     if (isNaN(count) || count <= 0) {
-      alert('Please enter a valid number greater than 0');
+      alert('Please Enter A Valid Number ');
       return;
     }
   
@@ -144,7 +150,7 @@ const App: React.FC = () => {
     <div className="p-m-4">
       <h2>React Project</h2>
       <div style={{ marginBottom: '1rem' }}>
-        <Button icon="pi pi-check" onClick={(e) => overlayRef.current?.toggle(e)} />
+        <Button className='Bulk-Check-btn' icon="pi pi-check" onClick={(e) => overlayRef.current?.toggle(e)} />
       </div>
       <OverlayPanel ref={overlayRef}>
         <div style={{ padding: '1rem' }}>
@@ -155,17 +161,18 @@ const App: React.FC = () => {
             placeholder="Enter number"
             style={{ marginBottom: '0.5rem', width: '100%' }}
           />
-          <Button label="Apply" icon="pi pi-check" onClick={handleBulkSelect} />
+          <Button className='Apply-btn' label="Apply" icon="pi pi-check" onClick={handleBulkSelect} />
         </div>
       </OverlayPanel>
       <Button
         label={allPageSelected ? "Unselect All on Page" : "Select All on Page"}
         icon="pi pi-check-square"
-        className="p-button-success"
+        className="All-Select-btn"
         onClick={handleSelectAllOnPage}
         style={{ marginBottom: '1rem', backgroundColor:''}}
       />
       <DataTable
+      className='DataTable-class'
         value={artworks}
         paginator
         showGridlines
@@ -180,10 +187,13 @@ const App: React.FC = () => {
         dataKey="id"
         rowClassName={(rowData) => (isRowSelected(rowData) ? 'p-highlight' : '')}
       >
-        <Column
-          headerStyle={{ width: '3em' }}
+        <Column 
+        
+          headerStyle={{ width: '5em' }}
           body={(rowData) => (
-            <input
+            <input style={{width:'1.3rem',
+                           height:'1.3rem',
+                           cursor:'pointer'}}
               type="checkbox"
               checked={isRowSelected(rowData)}
               onChange={() => handleRowCheckboxChange(rowData)}

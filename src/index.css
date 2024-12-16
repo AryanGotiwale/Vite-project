@@ -12,7 +12,36 @@ body {
 .p-highlight {
   background-color: #e0f7fa !important;
 }
-.p-button-success{
-  background-color: re;
+/* .Bulk-Check-btn{
+  background-color: hsl(206, 100%, 50%);
 }
+.Bulk-Check-btn:hover{
+  background-color: hsl(206, 100%, 45%);;
+}
+.Bulk-Check-btn:active{
+  background-color: white;
 
+}
+.Apply-btn{
+  background-color: hsl(206, 100%, 50%);
+}
+.Apply-btn:hover{
+  background-color: hsl(206, 100%, 45%);
+}
+/* .Apply-btn:active{
+  background-color: white;
+} */ */
+
+.All-Select-btn{
+  background-color: hsl(152, 91%, 36%);
+  border: none;
+  border-radius: 5px;
+  font-family: monospace;
+}
+.All-Select-btn:hover{
+  background-color: hsl(152, 91%, 31%);
+}
+/* .All-Select-btn:active{
+  background-color: white;
+} */
+ 
